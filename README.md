@@ -9,28 +9,28 @@ This piece of code intend to send the powermeter data trough mqtt.
 
 ## HOWTO Run
 
-  $ mkdir /srv/powermeter
-  $ docker run --device=/dev/serial/by-ipd/***name_of_your_device***:/dev/ttyUSB0 -v /srv/powermeter:/powermeter laurentddd/powermeter2mqtt:latest
+    $ mkdir /srv/powermeter
+    $ docker run --device=/dev/serial/by-ipd/***name_of_your_device***:/dev/ttyUSB0 -v /srv/powermeter:/powermeter laurentddd/powermeter2mqtt:latest
 
 ### Or with docker compose:
 Into your docker-compose.yml file, put :
 
-  version: '3'
-  services:
-    powermeter:
-      container_name: powermeter2mqtt
-      image: laurentddd/powermeter2mqtt:latest
-      restart: unless-stopped
-      environment:
-        - TZ=Europe/Brussels
-      volumes:
-        - /srv/powermeter:/powermeter
-      devices:
-        - /dev/serial/by-id/usb-1a86_USB2.0-Serial-if00-port0:/dev/ttyUSB0
+    version: '3'
+    services:
+      powermeter:
+        container_name: powermeter2mqtt
+        image: laurentddd/powermeter2mqtt:latest
+        restart: unless-stopped
+        environment:
+          - TZ=Europe/Brussels
+        volumes:
+          - /srv/powermeter:/powermeter
+        devices:
+          - /dev/serial/by-id/usb-1a86_USB2.0-Serial-if00-port0:/dev/ttyUSB0
         
 Then run
 
-  $ docker-compose up -d
+    $ docker-compose up -d
 
 ## Configuration file
 
