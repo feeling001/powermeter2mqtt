@@ -1,3 +1,0 @@
-pymodbus
-paho-mqtt
-configparser
